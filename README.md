@@ -50,6 +50,16 @@ rs.status()
 
 [web.http](web.http)
 
+# 抓包
+
+```bash
+# 抓包
+tcpdump -w pcap.pcap
+
+# 从*.pcap 中提取为monogdb op json
+mongoreplay monitor --paired --collect json -f pcap.pcap --report pcap.json
+```
+
 # 参考
 
 1. https://docs.mongodb.com/v3.4/reference/method/js-replication/

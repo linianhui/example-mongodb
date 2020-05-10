@@ -26,7 +26,7 @@ PUT {{HOST}}/mongodb/test-collection/code-1/findAndModify
 Content-Type: application/json
 
 {
-  "name":"name-findAndModify"
+  "name":"name-findAndModify-2"
 }
 
 ### 读取一条数据
