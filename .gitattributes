@@ -1,0 +1,19 @@
+# text   : 使用 lf 换行符进行存储.
+# binary : 原样存储.
+
+# 自动识别文件是否为text
+*                text=auto eol=lf
+
+# 使用 lf 存储, checkout 时替换为 lf.
+*.md             text eol=lf
+*.xml            text eol=lf
+*.yml            text eol=lf
+*.txt            text eol=lf
+*.http           text eol=lf
+*.java           text eol=lf
+*.json           text eol=lf
+*.properties     text eol=lf
+
+
+# 使用 lf 存储, checkout 时替换为 crlf.
+*.bat           text eol=crlf
