@@ -46,6 +46,10 @@ rs.initiate({
 rs.status()
 ```
 
+# 发起HTTP请求
+
+[web.http](web.http)
+
 # 参考
 
 1. https://docs.mongodb.com/v3.4/reference/method/js-replication/
