@@ -60,6 +60,8 @@ tcpdump -w pcap.pcap
 mongoreplay monitor --paired --collect json -f pcap.pcap --report pcap.json
 ```
 
+[pcap](pcap)
+
 # 参考
 
 1. https://docs.mongodb.com/v3.4/reference/method/js-replication/
