@@ -13,6 +13,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @CompoundIndexes({
     @CompoundIndex(
         name = "code_1",
+        unique = true,
         background = true,
         def = "{'code':1}"
     )
