@@ -1,0 +1,42 @@
+version: "3.3"
+
+services:
+
+  web:
+    build: .
+    ports:
+      - '18080:80'
+    depends_on:
+      - mongodb-server-1
+      - mongodb-server-2
+      - mongodb-server-3
+
+  mongodb-server-1:
+    build: ./mongodb/
+    command: --config /mongod.yml
+    volumes:
+      - volume_mongodb-server-1-data:/data/db
+      - volume_mongodb-server-1-configdb:/data/configdb
+
+  mongodb-server-2:
+    build: ./mongodb/
+    command: --config /mongod.yml
+    volumes:
+      - volume_mongodb-server-2-data:/data/db
+      - volume_mongodb-server-2-configdb:/data/configdb
+
+  mongodb-server-3:
+    build: ./mongodb/
+    command: --config /mongod.yml
+    volumes:
+      - volume_mongodb-server-3-data:/data/db
+      - volume_mongodb-server-3-configdb:/data/configdb
+
+
+volumes:
+  volume_mongodb-server-1-data:
+  volume_mongodb-server-1-configdb:
+  volume_mongodb-server-2-data:
+  volume_mongodb-server-2-configdb:
+  volume_mongodb-server-3-data:
+  volume_mongodb-server-3-configdb:

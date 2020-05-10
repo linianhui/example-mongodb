@@ -1,0 +1,14 @@
+#   http://docs.mongodb.org/manual/reference/configuration-options/
+
+net:
+  port: 27017
+  ssl:
+    mode: disabled
+
+security:
+  authorization: disabled
+  transitionToAuth: false
+
+replication:
+  replSetName: test-replica-set
+  enableMajorityReadConcern: true
