@@ -1,6 +1,7 @@
 package web;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.FindAndModifyOptions;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -49,7 +50,7 @@ public class MongodbController {
   }
 
 
-  @PutMapping("{code}/find-and-modify")
+  @PutMapping("{code}/findAndModify")
   public Object findAndModify(
     @PathVariable String code,
     @RequestBody TestCollection testCollection
@@ -58,6 +59,7 @@ public class MongodbController {
     return mongoTemplate.findAndModify(
       buildQuery(code),
       update,
+      FindAndModifyOptions.options().returnNew(true).upsert(false),
       TestCollection.class
     );
   }
