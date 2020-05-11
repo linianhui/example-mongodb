@@ -64,9 +64,4 @@ mongoreplay monitor --paired --collect json -f pcap.pcap --report pcap.json
 
 # 参考
 
-1. https://docs.mongodb.com/v3.4/reference/method/js-replication/
-1. https://docs.mongodb.com/manual/reference/connection-string/
-1. https://docs.mongodb.com/manual/reference/write-concern/
-1. https://docs.mongodb.com/manual/reference/read-concern/
-1. https://docs.mongodb.com/manual/core/read-preference/
-1. https://docs.mongodb.com/manual/reference/command/nav-crud/
+https://linianhui.github.io/mongodb/
