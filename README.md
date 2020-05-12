@@ -53,6 +53,12 @@ rs.status()
 # 抓包
 
 ```bash
+# 限制网速
+tc qdisc add dev eth0 root tbf rate 4mbit burst 4m latency 10ms
+
+# 解除限制
+tc qdisc del dev eth0 root tbf rate 4mbit burst 4m latency 10ms
+
 # 抓包
 tcpdump -w pcap.pcap
 
