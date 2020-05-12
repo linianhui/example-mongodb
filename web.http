@@ -4,10 +4,7 @@
 POST {{HOST}}/mongodb/test-collection
 Content-Type: application/json
 
-{
-  "code":"code-1",
-  "name":"name-1"
-}
+< ./test.json
 
 ### 删除一条数据
 DELETE {{HOST}}/mongodb/test-collection/code-1
