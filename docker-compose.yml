@@ -6,7 +6,7 @@ services:
     build: .
     networks:
       network_fixed:
-        ipv4_address: 172.18.0.80
+        ipv4_address: 172.19.0.80
     ports:
       - '18080:80'
     depends_on:
@@ -21,7 +21,7 @@ services:
       - NET_ADMIN
     networks:
       network_fixed:
-        ipv4_address: 172.18.0.2
+        ipv4_address: 172.19.0.2
     volumes:
       - volume_mongodb-server-1-data:/data/db
       - volume_mongodb-server-1-configdb:/data/configdb
@@ -33,7 +33,7 @@ services:
      - NET_ADMIN
     networks:
       network_fixed:
-        ipv4_address: 172.18.0.3
+        ipv4_address: 172.19.0.3
     volumes:
       - volume_mongodb-server-2-data:/data/db
       - volume_mongodb-server-2-configdb:/data/configdb
@@ -45,7 +45,7 @@ services:
      - NET_ADMIN
     networks:
       network_fixed:
-        ipv4_address: 172.18.0.4
+        ipv4_address: 172.19.0.4
     volumes:
       - volume_mongodb-server-3-data:/data/db
       - volume_mongodb-server-3-configdb:/data/configdb
@@ -65,4 +65,4 @@ networks:
     ipam:
       driver: default
       config:
-        - subnet: 172.18.0.0/16
+        - subnet: 172.19.0.0/16

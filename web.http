@@ -1,4 +1,4 @@
-@HOST = http://192.168.2.201:18080
+@HOST = http://192.168.70.3:18080
 
 ### 插入一条数据
 POST {{HOST}}/mongodb/test-collection
