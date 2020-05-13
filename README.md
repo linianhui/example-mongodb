@@ -68,6 +68,12 @@ mongoreplay monitor --paired --collect json -f pcap.pcap --report pcap.json
 
 [pcap](pcap)
 
+# 脏读测试
+
+```bash
+ab -c1 -t600s -m PUT http://192.168.70.3:18080/mongodb/test-collection/code-1/dirty-read
+```
+
 # 参考
 
 https://linianhui.github.io/mongodb/

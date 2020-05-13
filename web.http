@@ -29,3 +29,12 @@ Content-Type: application/json
 ### 读取一条数据
 GET {{HOST}}/mongodb/test-collection/code-1
 
+
+### 更新一条数据-脏读验证接口
+PUT {{HOST}}/mongodb/test-collection/code-1/dirty-read
+
+### 读取脏读日志
+GET {{HOST}}/mongodb/dirty-read-log
+
+### 清理脏读日志
+DELETE {{HOST}}/mongodb/dirty-read-log
