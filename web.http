@@ -30,6 +30,12 @@ Content-Type: application/json
 GET {{HOST}}/mongodb/test-collection/code-1
 
 
+### 查询数据
+GET {{HOST}}/mongodb/test-collection
+?updatedAt_Gte=2020-01-01T00%3a00%3a00.000%2b08%3a00
+&updatedAt_Lte=2021-01-01T00%3a00%3a00.000%2b08%3a00
+
+
 ### 更新一条数据-脏读验证接口
 PUT {{HOST}}/mongodb/test-collection/code-1/dirty-read
 

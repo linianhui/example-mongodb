@@ -1,12 +1,14 @@
 package web;
 
 import java.util.UUID;
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.FindAndModifyOptions;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -27,6 +30,9 @@ public class MongodbController {
   public Object insert(
       @RequestBody TestCollection testCollection
   ) {
+    final DateTime now = DateTime.now();
+    testCollection.setCreatedAt(now);
+    testCollection.setUpdatedAt(now);
     return mongoTemplate.insert(testCollection);
   }
 
@@ -42,7 +48,9 @@ public class MongodbController {
       @PathVariable String code,
       @RequestBody TestCollection testCollection
   ) {
-    Update update = Update.update("name", testCollection.getName());
+    Update update = Update
+        .update("name", testCollection.getName())
+        .set("updatedAt", DateTime.now());
     return mongoTemplate.updateFirst(
         buildQuery(code),
         update,
@@ -55,7 +63,9 @@ public class MongodbController {
       @PathVariable String code,
       @RequestBody TestCollection testCollection
   ) {
-    Update update = Update.update("name", testCollection.getName());
+    Update update = Update
+        .update("name", testCollection.getName())
+        .set("updatedAt", DateTime.now());
     return mongoTemplate.findAndModify(
         buildQuery(code),
         update,
@@ -69,6 +79,18 @@ public class MongodbController {
       @PathVariable String code
   ) {
     return mongoTemplate.findOne(buildQuery(code), TestCollection.class);
+  }
+
+  @GetMapping("test-collection")
+  public Object findList(
+      @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) DateTime updatedAt_Gte,
+      @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) DateTime updatedAt_Lte
+  ) {
+    final Criteria criteria = Criteria.where("updatedAt")
+        .gte(updatedAt_Gte)
+        .lte(updatedAt_Lte);
+    final Query query = Query.query(criteria);
+    return mongoTemplate.find(query, TestCollection.class);
   }
 
   private Query buildQuery(final String code) {
