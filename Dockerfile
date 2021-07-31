@@ -1,4 +1,4 @@
-FROM lnhcode/openjdk:8u232
+FROM lnhcode/openjdk:11.0.10
 
 RUN apt update && apt install -y net-tools tcpdump
 
