@@ -3,7 +3,7 @@
 
 ```bash
 # 编译项目
-./gradlew assemble
+./mvnw clean package
 
 # 启动项目
 docker-compose up -d --build

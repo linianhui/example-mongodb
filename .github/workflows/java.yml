@@ -1,0 +1,19 @@
+name: test
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-16.04
+
+    container:
+      # https://hub.docker.com/_/maven/
+      image: maven:3.8-openjdk-8
+
+    steps:
+      - name: git checkout
+        uses: actions/checkout@v1
+      - name: test
+        env:
+          debug: false
+        run: mvn test
