@@ -1,6 +1,4 @@
-FROM lnhcode/openjdk:11.0.10
-
-RUN apt update && apt install -y net-tools tcpdump
+FROM ghcr.io/linianhui/openjdk:11.0.13
 
 COPY target/web-0.1.jar web.jar
 
